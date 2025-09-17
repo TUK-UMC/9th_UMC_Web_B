@@ -18,11 +18,11 @@ const renderTasks = () => {
     todoList.innerHTML = "";
     doneList.innerHTML = "";
 
-    todos.forEach((todo):HTMLLIElement => {
+    todos.forEach((todo) => {
         const li = createTodoElement(todo, false);
         todoList.appendChild(li);
     });
-    doneTasks.forEach((todo):HTMLLIElement => {
+    doneTasks.forEach((todo) => {
         const li = createTodoElement(todo, true);
         doneList.appendChild(li);
     });
@@ -52,7 +52,7 @@ const deleteTodo = (todo:Todo):void => {
 }   
 //할 일 아이템 생성 함수
 
-const createTodoElement = (todo:Todo, isDone:boolean):void => {
+const createTodoElement = (todo:Todo, isDone:boolean):HTMLElement => {
     const li = document.createElement("li");
     li.classList.add('render-container__item');
     li.textContent = todo.text;
@@ -79,7 +79,7 @@ const createTodoElement = (todo:Todo, isDone:boolean):void => {
 };
 
 //폼 제출 이벤트 리스너
-todoForm.addEventListener("submit", (e:Event):void => {
+todoForm.addEventListener("submit", ():void => {
     event?.preventDefault();
     const text = getTodoText();
     if(text) addTodo(text);
