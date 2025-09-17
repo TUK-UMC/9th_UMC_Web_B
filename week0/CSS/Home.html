@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            grid-template-rows: 100px auto;
+        }
+        body {
+            display: grid;
+            background-color: rgb(0, 0, 0);
+            justify-content: center;
+            height: 100vh;
+        } 
+        .nav-container {
+            display: flex;
+            background-color: rgb(95, 95, 95);
+            border-radius: 50px;
+            align-items: center;
+            width: 400px;
+            height: 60px;
+            margin-top: 10px;
+        }
+        .nav-container__button {
+            background-color: rgb(95, 95, 95);
+            border: none;
+            border-radius: 40px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            padding: 15px 20px;
+            margin-left: 8px;
+        }
+        .nav-container__button:hover {
+            color: rgb(202, 202, 202);
+            transition-duration: 0.3s;
+        }
+        .nav-radio {
+            display: none;
+        }
+        .nav-radio:checked + .nav-container__button {
+            background-color: green;
+            color: white;
+        }
+        .index {
+            display: grid;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+            color: white;
+            text-align: center;
+        }
+        .hamburger {
+            display: none; /* 기본적으로 숨김 */
+            flex-direction: column;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: rgb(95, 95, 95);
+            border-radius: 10px;
+            padding: 10px;
+        }
+        .hamburger span {
+            display: block;
+            height: 3px;
+            background: white;
+            border-radius: 2px;
+        }
+        @media (max-width: 600px) {
+            .nav-container {
+                display: none; /* 버튼 박스 숨김 */
+            }
+            .hamburger {
+                display: flex; /* 햄버거 보이게 */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-container">
+        <input type="radio" class="nav-radio" name="nav" id="home" checked>
+        <label for="home" class="nav-container__button">Home</label>
+        <input type="radio" class="nav-radio" name="nav" id="projects">
+        <label for="projects" class="nav-container__button">Projects</label>
+        <input type="radio" class="nav-radio" name="nav" id="members">
+        <label for="members" class="nav-container__button">Members</label>
+        <input type="radio" class="nav-radio" name="nav" id="faq">
+        <label for="faq" class="nav-container__button">FAQ</label>
+    </div>
+    <div class="index">
+        <h1 class="index__title">UMC</h1>
+        <h4 class="index__subtitle">SMU</h4>
+        <p class="index__description">앱&웹 서비스 런칭에 도전하는 대학생 IT 연합동아리</p>
+        <button class="index__button">9기 모집 완료</button>
+        <img class="index__image" src="..." alt="logo">
+    </div>
+    <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</body>
+</html>
