@@ -80,15 +80,15 @@
                 li.appendChild(completeButton);
                 completeButton.addEventListener('click', () => {
                     done.appendChild(li);
-                    li.removeChild(completeButton);
+                    li.removeChild(completeButton);});
                     
-                    const deleteButton = document.createElement('button');
-                    deleteButton.textContent = '삭제';
-                    li.appendChild(deleteButton);
-                    deleteButton.addEventListener('click', () => {
-                        li.remove();
-                    });
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = '삭제';
+                li.appendChild(deleteButton);
+                deleteButton.addEventListener('click', () => {
+                    li.remove();
                 });
+                
             }
         })
     </script>
