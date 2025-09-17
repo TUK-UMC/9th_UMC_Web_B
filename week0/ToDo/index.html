@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDoList</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #d3e1ef;
+            text-align: center;
+        }
+        header {
+            color: #333;
+            font-size: 1.5em;
+            text-align: center;
+            margin-top: 5%;
+            margin-bottom: 5%;
+        }
+        input {
+            display: block;
+            margin: 50px auto;
+            width: 50%;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+        section {
+            display: inline-block;
+            width: 40%;
+            text-align: center;
+            vertical-align: top;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+            padding: 10px;
+        }
+        button {
+            margin-left: 10px;
+            padding: 5px 10px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>UMC Study Plan</h1>
+        <hr style="border: 1px solid #888; width: 50%;">
+    </header>
+    <input type="text" placeholder="스터디 계획을 작성해보세요!">
+    
+    <section>
+        <a><b>해야할 일</b></a>
+        <ul id = "todo"></ul>
+    </section>
+    <section>
+        <a><b>해낸 일</b></a>
+        <ul id = "done"></ul>
+    </section>
+    <script>
+        const input = document.querySelector('input');
+        const todo = document.getElementById('todo');
+        const done = document.getElementById('done');
+
+        input.addEventListener('keydown',(e) => {
+            if(e.key === 'Enter' && input.value.trim() !== '') {
+                const li = document.createElement('li');
+                li.textContent = input.value;
+                todo.appendChild(li);
+                input.value = '';
+
+                const completeButton = document.createElement('button');
+                completeButton.textContent = '완료';
+                li.appendChild(completeButton);
+                completeButton.addEventListener('click', () => {
+                    done.appendChild(li);
+                    li.removeChild(completeButton);
+                    
+                    const deleteButton = document.createElement('button');
+                    deleteButton.textContent = '삭제';
+                    li.appendChild(deleteButton);
+                    deleteButton.addEventListener('click', () => {
+                        li.remove();
+                    });
+                });
+            }
+        })
+    </script>
+</body>
+</html>
