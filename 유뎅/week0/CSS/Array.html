@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex & Grid</title>
+    <style>
+        body {
+            color: white;
+            font-size: 30px;
+            line-height: 200px;
+        }
+        .container {
+            display: grid;
+            height: 100vh;
+            text-align: center;
+            grid-template-rows: 100px;
+        }
+        .head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .head__header {
+            width: 30%;
+            background: black;
+        }
+        .head__menu {
+            width: 70%;
+            background: red;
+        }
+        .hero {
+            height: 400px;
+            background: #5066d6;
+        }
+        .content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+        }
+        .content__main {
+            background: #171924;
+        }
+        .content__sidebar {
+            display: grid;
+        }
+        .content__image {
+            background: #a3e5e0;
+        }
+        .content__extra {
+            background: #1ce3a4;
+        }
+        .banner {
+            background: #d6d450;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="head">
+            <div class="head__header">HEADER</div>
+            <div class="head__menu">MENU</div>
+        </header>
+        <section class="hero">HERO</section>
+        <section class="content">
+            <main class="content__main">MAIN</main>
+            <div class="content__empty"></div>
+            <aside class="content__sidebar">
+                <div class="content__image">IMAGE</div>
+                <div class="content__extra">EXTRA</div>
+            </aside>
+        </section>
+        <footer class="banner">BANNER</footer>
+    </div>
+</body>
+</html>
