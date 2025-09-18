@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transition Example</title>
+  <style>
+    body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        gap: 0px;
+    }
+    .box {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 45px;
+      background-color: rgb(235, 135, 178);
+      transform: rotate(45deg);
+    }
+
+    .box:hover {
+      background-color: rgb(68, 3, 105); /* 부드럽게 색상 변경 */
+      transition: background-color 1s;
+    }
+  </style>
+</head>
+<body>
+  <div class="box"></div>
+  <div class="box"></div>
+  <div class="box"></div>
+</body>
+</html>
