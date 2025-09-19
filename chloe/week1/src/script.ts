@@ -26,33 +26,35 @@ const renderTasks = () => {
         const li = createTodoElement(todo, true);
         doneList.appendChild(li);
     });
-
 };
 
 //할 일 텍스트 입력 처리 함수(공백 잘라줌)
 const getTodoText = ():string => {
     return todoInput.value.trim();
 }
+
 //할 일 추가 함수
 const addTodo = (text:string):void => {
     todos.push({id:Date.now(), text});
     todoInput.value = '';
     renderTasks();
 }
+
 //할 일 상태 변경(완료로 이동)
 const complteTodo =(todo:Todo):void => {
     todos = todos.filter(t => t.id !== todo.id);
     doneTasks.push(todo);
     renderTasks();
 }
+
 //완료된 할 일 삭제
 const deleteTodo = (todo:Todo):void => {
     doneTasks = doneTasks.filter((t):boolean => t.id !== todo.id);
     renderTasks();
 }   
-//할 일 아이템 생성 함수
 
-const createTodoElement = (todo:Todo, isDone:boolean):HTMLElement => {
+//할 일 아이템 생성 함수
+const createTodoElement = (todo:Todo, isDone:boolean): HTMLElement => {
     const li = document.createElement("li");
     li.classList.add('render-container__item');
     li.textContent = todo.text;
@@ -84,4 +86,5 @@ todoForm.addEventListener("submit", ():void => {
     const text = getTodoText();
     if(text) addTodo(text);
 });
+
 renderTasks();
