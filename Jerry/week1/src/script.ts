@@ -26,8 +26,6 @@ const renderTask = (): void => {
   });
 };
 
-
-
 const getTodoText = (): string => {
   return todoInput.value.trim();
 };
@@ -76,7 +74,6 @@ const createTodoElement = (todo: Todo, isDone: boolean): HTMLLIElement => {
   li.appendChild(button);
   return li;
 };
-
 
 todoForm.addEventListener('submit', (event: Event) : void => {
   event.preventDefault();
