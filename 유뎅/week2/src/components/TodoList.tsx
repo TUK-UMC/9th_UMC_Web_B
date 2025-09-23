@@ -17,11 +17,10 @@ const TodoList = ({title, todos, buttonLabel, buttonColor, onClick}: TodoListPro
                     <li key={todo.id} className='render-container__item'>
                         <span className='render-container__item-text'>{todo.text}</span>
                         <button 
-                            onClick={() : void => onClick(todo)}
-                            style={{
-                            backgroundColor: buttonColor,
-                        }}
-                            className='render-container__item-button'>{buttonLabel}</button>
+                            onClick={(): void => onClick(todo)}
+                            style={{backgroundColor: buttonColor}}
+                            className='render-container__item-button'>{buttonLabel}
+                        </button>
                     </li>
                 ))}
             </ul>

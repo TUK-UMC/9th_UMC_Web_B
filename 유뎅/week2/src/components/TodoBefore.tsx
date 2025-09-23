@@ -1,12 +1,12 @@
 import { useState, type FormEvent } from "react";
-import { type TTodo } from "../types/todo";
+import type { TTodo } from "../types/todo";
 
-const TodoBefore = (): Element => {
+const TodoBefore = () => {
     const [todos, setTodos] = useState<TTodo[]>([]);
     const [doneTodos, setDoneTodos] = useState<TTodo[]>([]);
     const [input, setInput] = useState<string>('');
 
-    const handleSubmit = (e: FormEvent<HTMLFormElement>) : void => {
+    const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
         const text = input.trim();
 
@@ -17,13 +17,13 @@ const TodoBefore = (): Element => {
         }
     };
 
-    const completeTodo = (todo: TTodo) : void => {
-        setTodos((prevTodos) : TTodo[] => prevTodos.filter((t) : boolean => t.id !== todo.id));
+    const completeTodo = (todo: TTodo): void => {
+        setTodos((prevTodos): TTodo[] => prevTodos.filter((t): boolean => t.id !== todo.id));
         setDoneTodos((prevDoneTodos): TTodo[] => [...prevDoneTodos, todo]);
     };
 
-    const deleteTodo = (todo: TTodo) : void => {
-        setDoneTodos((prevDoneTodo) : TTodo[] => prevDoneTodo.filter((t) : boolean => t.id !== todo.id));
+    const deleteTodo = (todo: TTodo): void => {
+        setDoneTodos((prevDoneTodo): TTodo[] => prevDoneTodo.filter((t): boolean => t.id !== todo.id));
     }
 
     return (
@@ -32,7 +32,7 @@ const TodoBefore = (): Element => {
             <form onSubmit={handleSubmit} className='todo-container__form'>
                 <input
                     value={input}
-                    onChange={(e) : void => setInput(e.target.value)}
+                    onChange={(e): void => setInput(e.target.value)}
                     type='text'
                     className='todo-container__input'
                     placeholder="할 일을 입력하세요."
@@ -47,7 +47,7 @@ const TodoBefore = (): Element => {
                             <li key={todo.id} className='render-container__item'>
                                 <span className='render-container__item-text'>{todo.text}</span>
                                 <button 
-                                    onClick={() : void => completeTodo(todo)}
+                                    onClick={(): void => completeTodo(todo)}
                                     style={{
                                     backgroundColor: 'green',
                                 }}
@@ -63,7 +63,7 @@ const TodoBefore = (): Element => {
                             <li key={todo.id} className='render-container__item'>
                                 <span className='render-container__item-text'>{todo.text}</span>
                                 <button 
-                                    onClick={() : void => deleteTodo(todo)}
+                                    onClick={(): void => deleteTodo(todo)}
                                     style={{
                                     backgroundColor: 'red',
                                 }}

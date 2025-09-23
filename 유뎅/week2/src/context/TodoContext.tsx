@@ -15,18 +15,18 @@ export const TodoProvider = ({ children }: PropsWithChildren) => {
     const [todos, setTodos] = useState<TTodo[]>([]);
     const [doneTodos, setDoneTodos] = useState<TTodo[]>([]);
 
-    const addTodo = (text: string) : void => {
+    const addTodo = (text: string): void => {
         const newTodo: TTodo = {id: Date.now(), text};
         setTodos((prevTodos): TTodo[] => [...prevTodos, newTodo]);
     }
 
-    const completeTodo = (todo: TTodo) : void => {
-        setTodos((prevTodos) : TTodo[] => prevTodos.filter((t) : boolean => t.id !== todo.id));
+    const completeTodo = (todo: TTodo): void => {
+        setTodos((prevTodos): TTodo[] => prevTodos.filter((t): boolean => t.id !== todo.id));
         setDoneTodos((prevDoneTodos): TTodo[] => [...prevDoneTodos, todo]);
     };
 
-    const deleteTodo = (todo: TTodo) : void => {
-        setDoneTodos((prevDoneTodo) : TTodo[] => prevDoneTodo.filter((t) : boolean => t.id !== todo.id));
+    const deleteTodo = (todo: TTodo): void => {
+        setDoneTodos((prevDoneTodo): TTodo[] => prevDoneTodo.filter((t): boolean => t.id !== todo.id));
     };
 
     return (
