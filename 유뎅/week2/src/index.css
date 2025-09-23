@@ -15,6 +15,11 @@ body {
     background-color: #f0f0f0;
 }
 
+body.dark {
+    background-color: #121212;
+    color: white;
+}
+
 .todo-container {
     background-color: #fff;
     border-radius: 8px;
@@ -22,6 +27,12 @@ body {
     padding: 20px;
     width: 450px;
     text-align: center;
+}
+
+body.dark .todo-container {
+    background-color: #1e1e1e;
+    color: white;
+    box-shadow: 0 2px 6px rgba(255, 255, 255, 0.1);
 }
 
 .todo-container__header {
@@ -41,6 +52,12 @@ body {
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
+}
+
+body.dark .todo-container__input {
+    background-color: #2a2a2a;
+    border: 1px solid #444;
+    color: white;
 }
 
 .todo-container__button {
@@ -66,7 +83,6 @@ body {
 .render-container__header {
     font-size: 18px;
     margin-bottom: 12px;
-
     display: flex;
     justify-content: center;
 }
@@ -86,13 +102,18 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     padding: 8px;
     border-bottom: 1px solid #ddd;
     background-color: #f9f9f9;
     border-radius: 4px;
     margin-bottom: 8px;
     width: 100%;
+}
+
+body.dark .render-container__item {
+    background-color: #2a2a2a;
+    border-bottom: 1px solid #444;
+    color: white;
 }
 
 .render-container__item text {
@@ -112,4 +133,17 @@ body {
 
 .render-container__item button:hover {
     background-color: #c82333;
+}
+
+.theme__button {
+  padding: 10px 16px;
+  margin: 16px 0;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: black;
+}
+
+body.dark .theme__button {
+  color: white;
 }

@@ -1,12 +1,14 @@
 import TodoForm from './TodoForm';
 import TodoList from './TodoList';
 import { useTodo } from '../context/TodoContext';
+import ThemeToggleButton from './ThemeToggleButton';
 
 const Todo = () => {
     const context = useTodo();
 
     return (
         <div className='todo-container'>
+            <ThemeToggleButton />
             <h1 className='todo-container__header'>Todo List</h1>
             <TodoForm />
             <div className='render-container'>
