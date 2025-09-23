@@ -1,11 +1,13 @@
-import './App.css'
+import './App.css';
+import Todo from './components/Todo'
+import { TodoProvider } from './context/TodoContext';
 
 function App() {
   return (
-    <>
-      <h1>Hello React</h1>
-    </>
-  )
+    <TodoProvider>
+      <Todo />
+    </TodoProvider>
+  );
 }
 
-export default App
+export default App;
