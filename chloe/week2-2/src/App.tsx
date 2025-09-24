@@ -1,0 +1,10 @@
+import './App.css'
+import ContextPage from './context/ContextPage';
+
+export default function App(): React.ReactElement{
+  return(
+    <>
+      <ContextPage />
+    </>
+  );
+}
