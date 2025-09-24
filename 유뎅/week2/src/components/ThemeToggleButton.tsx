@@ -1,4 +1,4 @@
-import { THEME, useTheme } from "../context/ThemeProvider";
+import { THEME, useTheme } from '../context/ThemeProvider';
 
 const ThemeToggleButton = () => {
     const { theme, toggleTheme } = useTheme();
@@ -7,7 +7,7 @@ const ThemeToggleButton = () => {
 
     return (
         <button onClick={toggleTheme}
-            className="theme__button">
+            className='theme__button'>
             {isLightMode ? '🌕라이트 모드' : '🌙다크 모드'}
         </button>
     );

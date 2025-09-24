@@ -1,5 +1,5 @@
-import { useState, type FormEvent } from "react";
-import { useTodo } from "../context/TodoContext";
+import { useState, type FormEvent } from 'react';
+import { useTodo } from '../context/TodoContext';
 
 const TodoForm = () => {
     const [input, setInput] = useState<string>('');
@@ -21,7 +21,7 @@ const TodoForm = () => {
                 onChange={(e): void => setInput(e.target.value)}
                 type='text'
                 className='todo-container__input'
-                placeholder="할 일을 입력하세요."
+                placeholder='할 일을 입력하세요.'
                 required />
             <button type='submit' className='todo-container__button'>추가</button>
         </form>

@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState, type PropsWithChildren } from "react";
+import { createContext, useContext, useEffect, useState, type PropsWithChildren } from 'react';
 
 export enum THEME {
     LIGHT = 'LIGHT',
@@ -23,9 +23,9 @@ export const ThemeProvider = ({ children }: PropsWithChildren) => {
 
     useEffect(() => {
         if (theme === THEME.DARK) {
-            document.body.classList.add("dark");
+            document.body.classList.add('dark');
         } else {
-            document.body.classList.remove("dark");
+            document.body.classList.remove('dark');
         }
     }, [theme]);
 

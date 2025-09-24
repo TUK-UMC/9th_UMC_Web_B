@@ -1,5 +1,5 @@
-import { useState, type FormEvent } from "react";
-import type { TTodo } from "../types/todo";
+import { useState, type FormEvent } from 'react';
+import type { TTodo } from '../types/todo';
 
 const TodoBefore = () => {
     const [todos, setTodos] = useState<TTodo[]>([]);
@@ -35,7 +35,7 @@ const TodoBefore = () => {
                     onChange={(e): void => setInput(e.target.value)}
                     type='text'
                     className='todo-container__input'
-                    placeholder="할 일을 입력하세요."
+                    placeholder='할 일을 입력하세요.'
                     required />
                 <button type='submit' className='todo-container__button'>추가</button>
             </form>
