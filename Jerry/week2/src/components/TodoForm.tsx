@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useTodo } from '../context/TodoContext';
+import { useState } from "react";
+import { useTodo } from "../context/TodoContext";
 
 // 할 일 추가 폼 컴포넌트
 const TodoForm = (): React.ReactElement => {
@@ -18,24 +18,20 @@ const TodoForm = (): React.ReactElement => {
   };
 
   return (
-    <form 
-      className='todo-container__form' 
-      onSubmit={handleSubmit}>
-      <input 
-        className='todo-container__input' 
-        type="text" 
-        placeholder='할 일 입력' 
-        value={input} 
+    <form className="todo-container__form" onSubmit={handleSubmit}>
+      <input
+        className="todo-container__input"
+        type="text"
+        placeholder="할 일 입력"
+        value={input}
         onChange={(e) => setInput(e.target.value)}
-        required 
+        required
       />
-      <button 
-        className='todo-container__button' 
-        type='submit'>
+      <button className="todo-container__button" type="submit">
         할 일 추가
       </button>
     </form>
   );
-}
+};
 
 export default TodoForm;

@@ -6,9 +6,9 @@ import ThemeContent from './ThemeContent';
 export default function ContextPage(): React.JSX.Element {
   return (
     <ThemeProvider>
-      <div className="flex flex-col items-center justify-center min-h-screen">
+      <div className='flex flex-col items-center justify-center min-h-screen'>
         <Navbar />
-        <main className="flex-1 w-full">
+        <main className='flex-1 w-full'>
           <ThemeContent />
         </main>
       </div>

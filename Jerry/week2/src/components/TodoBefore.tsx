@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { TTodo } from '../types/todo';
+import { useState } from "react";
+import { TTodo } from "../types/todo";
 
 // 할 일 관리 컴포넌트 (컨텍스트 적용 전)
 const TodoBefore = (): React.ReactElement => {
@@ -11,7 +11,7 @@ const TodoBefore = (): React.ReactElement => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (input.trim() === '') return;
+    if (input.trim() === "") return;
 
     const newTodo: TTodo = {
       id: Date.now(),
@@ -19,7 +19,7 @@ const TodoBefore = (): React.ReactElement => {
     };
 
     setTodos([...todos, newTodo]);
-    setInput('');
+    setInput("");
   };
 
   // 할 일 완료 및 삭제 핸들러
@@ -34,41 +34,62 @@ const TodoBefore = (): React.ReactElement => {
 
   // 렌더링
   return (
-    <div className='todo-container'>
-      <h1 className='todo-container__header'>Jerry Todo</h1>
-      <form className='todo-container__form' onSubmit={handleSubmit}>
-        <input className='todo-container__input' type="text" placeholder='할 일 입력' required value={input} onChange={(e) => setInput(e.target.value)} />
-        <button className='todo-container__button' type='submit'>할 일 추가</button>
+    <div className="todo-container">
+      <h1 className="todo-container__header">Jerry Todo</h1>
+      <form className="todo-container__form" onSubmit={handleSubmit}>
+        <input
+          className="todo-container__input"
+          type="text"
+          placeholder="할 일 입력"
+          required
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+        />
+        <button className="todo-container__button" type="submit">
+          할 일 추가
+        </button>
       </form>
-      <div className='render-container'>
-        <div className='render-container__section'>
-          <h2 className='render-container__title'>할 일</h2>
-          <ul id="todo-list" className='render-container__list'>
-            {todos.map((todo) : React.ReactElement => (
-              <li key={todo.id} className='render-container__item'>
-                <span className='render-container__item-text'>{todo.text}</span>
-                <button
-                  onClick={() => handleDone(todo)}
-                  style={{ backgroundColor: '#28a745' }}
-                  className='render-container__item-button'>완료
-                </button>
-              </li>
-            ))}
+      <div className="render-container">
+        <div className="render-container__section">
+          <h2 className="render-container__title">할 일</h2>
+          <ul id="todo-list" className="render-container__list">
+            {todos.map(
+              (todo): React.ReactElement => (
+                <li key={todo.id} className="render-container__item">
+                  <span className="render-container__item-text">
+                    {todo.text}
+                  </span>
+                  <button
+                    onClick={() => handleDone(todo)}
+                    style={{ backgroundColor: "#28a745" }}
+                    className="render-container__item-button"
+                  >
+                    완료
+                  </button>
+                </li>
+              )
+            )}
           </ul>
         </div>
-        <div className='render-container__section'>
-          <h2 className='render-container__title'>완료</h2>
-          <ul id="todo-list" className='render-container__list'>
-            {doneTodos.map((todo) : React.ReactElement => (
-              <li key={todo.id} className='render-container__item'>
-                <span className='render-container__item-text'>{todo.text}</span>
-                <button
-                  onClick={() => handleDelete(todo)}
-                  style={{ backgroundColor: '#dc3545' }}
-                  className='render-container__item-button'>삭제
-                </button>
-              </li>
-            ))}
+        <div className="render-container__section">
+          <h2 className="render-container__title">완료</h2>
+          <ul id="todo-list" className="render-container__list">
+            {doneTodos.map(
+              (todo): React.ReactElement => (
+                <li key={todo.id} className="render-container__item">
+                  <span className="render-container__item-text">
+                    {todo.text}
+                  </span>
+                  <button
+                    onClick={() => handleDelete(todo)}
+                    style={{ backgroundColor: "#dc3545" }}
+                    className="render-container__item-button"
+                  >
+                    삭제
+                  </button>
+                </li>
+              )
+            )}
           </ul>
         </div>
       </div>

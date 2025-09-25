@@ -1,4 +1,4 @@
-import { TTodo } from '../types/todo';
+import { TTodo } from "../types/todo";
 
 // props 타입 정의
 interface TodoListProps {
@@ -10,24 +10,34 @@ interface TodoListProps {
 }
 
 // TodoList 컴포넌트
-const TodoList: React.FC<TodoListProps> = ({ title, todos, buttonLabel, buttonColor, onClick }) => {
+const TodoList: React.FC<TodoListProps> = ({
+  title,
+  todos,
+  buttonLabel,
+  buttonColor,
+  onClick,
+}) => {
   return (
-    <div className='render-container__section'>
-      <h2 className='render-container__title'>{title}</h2>
-      <ul id="todo-list" className='render-container__list'>
-        {todos?.map((todo) : React.ReactElement => (
-          <li key={todo.id} className='render-container__item'>
-            <span className='render-container__item-text'>{todo.text}</span>
-            <button
-              onClick={() => onClick?.(todo)}
-              style={{ backgroundColor: buttonColor }}
-              className='render-container__item-button'>{buttonLabel}
-            </button>
-          </li>
-        ))}
+    <div className="render-container__section">
+      <h2 className="render-container__title">{title}</h2>
+      <ul id="todo-list" className="render-container__list">
+        {todos?.map(
+          (todo): React.ReactElement => (
+            <li key={todo.id} className="render-container__item">
+              <span className="render-container__item-text">{todo.text}</span>
+              <button
+                onClick={() => onClick?.(todo)}
+                style={{ backgroundColor: buttonColor }}
+                className="render-container__item-button"
+              >
+                {buttonLabel}
+              </button>
+            </li>
+          )
+        )}
       </ul>
     </div>
   );
-}
-        
+};
+
 export default TodoList;

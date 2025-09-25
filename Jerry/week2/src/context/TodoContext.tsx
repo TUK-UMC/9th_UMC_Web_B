@@ -1,5 +1,5 @@
-import { createContext, PropsWithChildren, useContext, useState } from 'react';
-import { TTodo } from '../types/todo';
+import { createContext, PropsWithChildren, useContext, useState } from "react";
+import { TTodo } from "../types/todo";
 
 // 컨텍스트의 타입 정의
 interface ITodoContext {
@@ -47,7 +47,7 @@ export const useTodo = () => {
   const context = useContext(TodoContext);
   // 컨텍스트가 없는 경우 에러 처리
   if (!context) {
-    throw new Error('useTodo must be used within a TodoProvider');
+    throw new Error("useTodo must be used within a TodoProvider");
   }
   // 컨텍스트 반환
   return context;
