@@ -1,5 +1,5 @@
-import { useState, FormEvent } from "react";
-import { TTodo } from "../types/todo";
+import { useState, FormEvent } from 'react';
+import { TTodo } from '../types/todo';
 
 const TodoBefore = (): React.ReactElement => {
     const [todos, setTodos] = useState<TTodo[]>([]);
@@ -22,8 +22,7 @@ const TodoBefore = (): React.ReactElement => {
     };
     const deleteTodo = (todo: TTodo): void => {
         setDoneTodos((prevDoneTodos) : TTodo[] => 
-            prevDoneTodos.filter((t):boolean => t.id !== todo.id))
-        
+            prevDoneTodos.filter((t):boolean => t.id !== todo.id))  
     };
 
     return(
@@ -34,7 +33,7 @@ const TodoBefore = (): React.ReactElement => {
                     value={input}
                     onChange={(e):void => setInput(e.target.value)}
                     className='todo-container__input' 
-                    type="text" 
+                    type='text'
                     placeholder='할 일을 입력'
                     required
                 />
@@ -42,10 +41,10 @@ const TodoBefore = (): React.ReactElement => {
                     할 일 추가
                 </button>
             </form>
-            <div className="render-container">
+            <div className='render-container'>
                 <div className='render-container__section'>
                     <h2 className='render-container__title'>할 일</h2>
-                    <ul id='todo-listt' className="render-container__list">
+                    <ul id='todo-listt' className='render-container__list'>
                     {todos.map((todo): any =>(
                         <li key={todo.id} className='render-container__item'>
                             <span className='render-container__item-text'>{todo.text}</span>
@@ -54,14 +53,17 @@ const TodoBefore = (): React.ReactElement => {
                                 style={{
                                     backgroundColor:'#28a745',
                                 }}
-                                className='render-container__item-button'>완료</button>
+                                className='render-container__item-button'
+                            >
+                            완료
+                            </button>
                         </li>
                     ))}
                     </ul>
                 </div>
                 <div className='render-container__section'>
                     <h2 className='render-container__title'>완료</h2>
-                    <ul id='todo-listt' className="render-container__list">
+                    <ul id='todo-listt' className='render-container__list'>
                     {doneTodos.map((todo): any =>(
                         <li key={todo.id} className='render-container__item'>
                             <span className='render-container__item-text'>{todo.text}</span>
@@ -70,7 +72,10 @@ const TodoBefore = (): React.ReactElement => {
                                 style={{
                                     backgroundColor:'#dc3545',
                                 }}
-                                className='render-container__item-button'>삭제</button>
+                                className='render-container__item-button'
+                            >
+                            삭제
+                            </button>
                         </li>
                     ))}
                     </ul>

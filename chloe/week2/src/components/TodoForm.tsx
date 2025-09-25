@@ -1,5 +1,5 @@
-import {useState, FormEvent} from "react";
-import { useTodo } from "../context/TodoContext";
+import {useState, FormEvent} from 'react';
+import { useTodo } from '../context/TodoContext';
 
 const TodoForm = () : React.ReactElement => {
     const [input, setInput] = useState<string>('');

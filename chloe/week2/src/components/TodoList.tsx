@@ -18,7 +18,8 @@ const TodoList = ({
     return (
         <div className='render-container__section'>
             <h2 className='render-container__title'>{title}</h2>
-                <ul id='todo-listt' className="render-container__list">{todos.map((todo): any =>(
+                <ul id='todo-listt' className="render-container__list">
+                    {todos.map((todo): any =>(
                     <li key={todo.id} className='render-container__item'>
                         <span className='render-container__item-text'>{todo.text}</span>
                         <button 
@@ -26,9 +27,10 @@ const TodoList = ({
                             style={{
                                 backgroundColor: buttonColor,
                             }}
-                            className='render-container__item-button'>
-                                {buttonLabel}
-                            </button>
+                            className='render-container__item-button'
+                        >
+                        {buttonLabel}
+                        </button>
                     </li>
                 ))}
                 </ul>
