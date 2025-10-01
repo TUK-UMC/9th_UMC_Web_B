@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import type { MovieResponse, Movie } from '../types/movie';
-import MovieCard from '../components/MovieCard';
-import { LoadingSpinner } from '../components/LoadingSpinner';
-import { Pagenation } from '../components/pagenation';
-import { useParams } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import axios from "axios";
+import type { MovieResponse, Movie } from "../types/movie";
+import MovieCard from "../components/MovieCard";
+import { LoadingSpinner } from "../components/LoadingSpinner";
+import { Pagenation } from "../components/pagenation";
+import { useParams } from "react-router-dom";
 
 export default function MoviePage() {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -43,7 +43,7 @@ export default function MoviePage() {
   if (isError) {
     return (
       <div>
-        <span className='text-red-500 text-2xl'>에러가 발생했습니다.</span>
+        <span className="text-red-500 text-2xl">에러가 발생했습니다.</span>
       </div>
     )
   }
@@ -52,12 +52,12 @@ export default function MoviePage() {
     <>
       <Pagenation page={page} setPage={setPage} />
       {isPaending && (
-        <div className='flex items-center justify-center h-dvh'>
+        <div className="flex items-center justify-center h-dvh">
           <LoadingSpinner />
         </div>
       )}
       {!isPaending && (
-        <div className='p-10 grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6'>
+        <div className="p-10 grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
         {movies.map((movie) => (
           <MovieCard key= {movie.id} movie={movie} />
         ))}
