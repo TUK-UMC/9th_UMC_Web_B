@@ -30,7 +30,7 @@ export default function MovieDetailPage() {
       try {
         setIsPending(true);
         const {data:movieData} = await axios.get<MovieDetail>(
-          `https://api.themoviedb.org/3/movie/${movieId}?language=ko-KO`, 
+          `https://api.themoviedb.org/3/movie/${movieId}?language=ko-KR`, 
           {
             headers: {
               Authorization: `Bearer ${import.meta.env.VITE_TMDB_KEY}`,
@@ -39,7 +39,7 @@ export default function MovieDetailPage() {
         );
         setMovies(movieData);
         const {data:creditData} = await axios.get<Credit>(
-          `https://api.themoviedb.org/3/movie/${movieId}/credits?language=ko-KO`,
+          `https://api.themoviedb.org/3/movie/${movieId}/credits?language=ko-KR`,
           {
             headers: {
               Authorization: `Bearer ${import.meta.env.VITE_TMDB_KEY}`,

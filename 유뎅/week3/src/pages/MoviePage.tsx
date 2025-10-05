@@ -23,7 +23,7 @@ export default function MoviePage() {
 
       try {
         const {data} = await axios.get<MovieResponse>(
-        `https://api.themoviedb.org/3/movie/${params.category}?language=ko-KO&page=${page}`,
+        `https://api.themoviedb.org/3/movie/${params.category}?language=ko-KR&page=${page}`,
         {
           headers: {
             Authorization: `Bearer ${import.meta.env.VITE_TMDB_KEY}`,
