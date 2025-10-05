@@ -1,8 +1,8 @@
-import { createContext, useContext, useState, type PropsWithChildren } from "react";
+import { createContext, useContext, useState, type PropsWithChildren } from 'react';
 
 export const THEME = {
-    LIGHT: "LIGHT",
-    DARK: "DARK",
+    LIGHT: 'LIGHT',
+    DARK: 'DARK',
 } as const;
 
 export type TTheme = typeof THEME[keyof typeof THEME];
