@@ -1,7 +1,6 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { LoadingSpinner } from "../components/LoadingSpinner";
+import { useCustomFetch } from "../hooks/useCustomFetch";
 
 interface MovieDetail {
   title: string;
@@ -20,43 +19,14 @@ interface Credit {
 
 export default function MovieDetailPage() {
   const {movieId} = useParams<{movieId: string}>();
-  const [movies, setMovies] = useState<MovieDetail>();
-  const [credits, setCredits] = useState<Credit>();
-  const [isPaending, setIsPending] = useState(true);
-  const [isError, setIsError] = useState(false);
 
-  useEffect(() => {
-    const fetchMovieDetail = async () => {
-      try {
-        setIsPending(true);
-        const {data:movieData} = await axios.get<MovieDetail>(
-          `https://api.themoviedb.org/3/movie/${movieId}?language=ko-KR`, 
-          {
-            headers: {
-              Authorization: `Bearer ${import.meta.env.VITE_TMDB_KEY}`,
-            }
-          }
-        );
-        setMovies(movieData);
-        const {data:creditData} = await axios.get<Credit>(
-          `https://api.themoviedb.org/3/movie/${movieId}/credits?language=ko-KR`,
-          {
-            headers: {
-              Authorization: `Bearer ${import.meta.env.VITE_TMDB_KEY}`,
-            }
-          }
-        );
-        setCredits(creditData);
-      } catch {
-        setIsError(true);
-      } finally {
-        setIsPending(false);
-      }
-    };
-    fetchMovieDetail();
-  }, [movieId]);
+  const detailUrl = movieId ? `https://api.themoviedb.org/3/movie/${movieId}?language=ko-KR` : undefined;
+  const creditUrl = movieId ? `https://api.themoviedb.org/3/movie/${movieId}/credits?language=ko-KR` : undefined;
 
-  if (isPaending) {
+  const { data: movies, isPending, isError } = useCustomFetch<MovieDetail>(detailUrl);
+  const { data: credits } = useCustomFetch<Credit>(creditUrl);
+
+  if (isPending) {
     return (
       <div className="flex items-center justify-center h-dvh">
         <LoadingSpinner />
