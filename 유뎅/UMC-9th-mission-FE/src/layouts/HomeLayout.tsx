@@ -6,6 +6,7 @@ export const HomeLayout = () => {
       <NavLink to="/">홈</NavLink>
       <NavLink to="/login">로그인</NavLink>
       <NavLink to="/signup">회원가입</NavLink>
+      <NavLink to="/my">마이페이지</NavLink>
       <main className="flex-1">
         <Outlet />
       </main>
