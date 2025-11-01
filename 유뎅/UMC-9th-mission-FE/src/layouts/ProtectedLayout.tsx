@@ -1,5 +1,7 @@
-import { Navigate, NavLink, Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 export const ProtectedLayout = () => {
   const { accessToken } = useAuth();
@@ -8,12 +10,12 @@ export const ProtectedLayout = () => {
     return <Navigate to={"login"} replace />;
   }
   return (
-    <div className="h-dvh flex flex-col">
-      <NavLink to="/">홈</NavLink>
-      <main className="flex-1">
+    <div className="h-dvh flex flex-col ">
+      <Navbar />
+      <main className="flex-1 mt-10">
         <Outlet />
       </main>
-      <footer>푸터</footer>
+      <Footer />
     </div>
   );
 };
