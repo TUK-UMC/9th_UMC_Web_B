@@ -1,16 +1,15 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 export const HomeLayout = () => {
   return (
-    <div className="h-dvh flex flex-col">
-      <NavLink to="/">홈</NavLink>
-      <NavLink to="/login">로그인</NavLink>
-      <NavLink to="/signup">회원가입</NavLink>
-      <NavLink to="/my">마이페이지</NavLink>
-      <main className="flex-1">
+    <div className="h-dvh flex flex-col ">
+      <Navbar />
+      <main className="flex-1 mt-10">
         <Outlet />
       </main>
-      <footer>푸터</footer>
+      <Footer />
     </div>
   );
 };

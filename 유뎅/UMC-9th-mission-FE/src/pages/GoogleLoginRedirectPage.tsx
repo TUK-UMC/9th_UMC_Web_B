@@ -17,7 +17,7 @@ export const GoogleLoginRedirectPage = () => {
     if (accessToken) {
       setAccessToken(accessToken);
       setRefreshToken(refreshToken);
-      window.location.href = "/my";
+      window.location.href = "/";
     }
   }, [setAccessToken, setRefreshToken]);
   return <div>구글 로그인 리다이렉 화면</div>;

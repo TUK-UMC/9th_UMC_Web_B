@@ -94,6 +94,7 @@ axiosInstance.interceptors.response.use(
             );
             removeAccessToken();
             removeRefreshToken();
+            console.log(error);
           })
           .finally(() => {
             refreshPromise = null;
