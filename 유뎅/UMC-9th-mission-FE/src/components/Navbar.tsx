@@ -7,12 +7,30 @@ const Navbar = () => {
   return (
     <nav className="bg-white dark:bg-gray-900 shadow-md fixed w-full z-20">
       <div className="flex items-center justify-between p-4">
-        <NavLink
-          to="/"
-          className="text-xl font-bold text-gray-900 dark:text-white"
-        >
-          돌려돌려 돌림판
-        </NavLink>
+        <div className="flex items-center gap-2">
+          <svg
+            width="36"
+            height="36"
+            viewBox="0 0 48 48"
+            xmlns="http://www.w3.org/2000/svg"
+            className="text-white"
+          >
+            <path
+              fill="none"
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="4"
+              d="M7.95 11.95h32m-32 12h32m-32 12h32"
+            />
+          </svg>
+          <NavLink
+            to="/"
+            className="text-xl font-bold text-gray-900 dark:text-white"
+          >
+            돌려돌려 돌림판
+          </NavLink>
+        </div>
         <div className="space-x-6">
           <NavLink
             to="/search"

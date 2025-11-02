@@ -32,7 +32,7 @@ export const HomePage = () => {
 
   return (
     <div className="container m-auto px-4 py-8">
-      <div className="grid grid-cols-1 grid-rows-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
         {isPending && <LpCardSkeletonList count={20} />}
         {lps?.pages
           ?.map((page) => page.data.data)
