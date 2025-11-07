@@ -40,7 +40,7 @@ export const LpDetailPage = () => {
       <div className="flex items-center flex-col bg-zinc-400 w-250 h-250 p-6 rounded-2xl">
         <div className="flex flex-col items-center justify-center w-180 p-6">
           <div className="flex items-center justify-between w-full">
-            <div>
+            <div className="flex">
               <div className="flex bg-black rounded-full w-10 h-10"></div>
               <p className="flex text-bold">게시자</p>
             </div>
