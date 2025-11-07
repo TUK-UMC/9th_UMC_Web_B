@@ -1,8 +1,8 @@
 import { NavLink } from "react-router-dom";
 
-const Footer = () => {
+export const Footer = () => {
   return (
-    <footer className="bg-white dark:bg-gray-900 py-6 mt-12">
+    <footer className="bg-white dark:bg-gray-900 py-6">
       <div className="container mx-auto text-center text-sm text-gray-600 dark:text-gray-400">
         <p>
           &copy; {new Date().getFullYear()} 돌려돌려 돌림판. All rights
@@ -17,5 +17,3 @@ const Footer = () => {
     </footer>
   );
 };
-
-export default Footer;
