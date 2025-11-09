@@ -1,14 +1,16 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { Search } from "lucide-react";
+import useGetMyInfo from "../hooks/queries/useGetMyInfo";
 
 interface NavbarProps {
-  onMenuClick?: () => void; // 🔹 사이드바 열기 함수 받기
+  onMenuClick?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ onMenuClick }) => {
   const navigate = useNavigate();
   const { accessToken, logout } = useAuth();
+  const { data: me } = useGetMyInfo(accessToken);
 
   const handleLogout = async () => {
     await logout();
@@ -61,10 +63,16 @@ export const Navbar: React.FC<NavbarProps> = ({ onMenuClick }) => {
           )}
           {accessToken && (
             <div className="flex gap-4">
-              <NavLink to="/my" className="text-white">
-                마이페이지
+              <NavLink
+                to="/my"
+                className="text-gray-700 dark:text-gray-300 hover:text-blue-500"
+              >
+                {me?.data.name}님 반갑습니다.
               </NavLink>
-              <button className="text-white" onClick={handleLogout}>
+              <button
+                className="text-gray-700 dark:text-gray-300 hover:text-blue-500"
+                onClick={handleLogout}
+              >
                 로그아웃
               </button>
             </div>

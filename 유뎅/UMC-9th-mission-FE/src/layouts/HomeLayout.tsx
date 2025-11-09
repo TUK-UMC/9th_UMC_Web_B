@@ -22,7 +22,7 @@ export const HomeLayout = () => {
   }, []);
 
   return (
-    <div className="h-dvh flex flex-col ">
+    <div className="min-h-screen flex flex-col ">
       <Navbar onMenuClick={() => setIsOpen((prev) => !prev)} />
       <div className="flex flex-1">
         <Sidebar isOpen={isOpen} />
