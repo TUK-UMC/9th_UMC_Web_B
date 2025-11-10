@@ -7,6 +7,8 @@ import { LpCard } from "../components/LpCard/LpCard";
 
 export const HomePage = () => {
   const [search, setSearch] = useState("");
+  const [order, setOrder] = useState(PAGINATION_ORDER.desc);
+
   const {
     data: lps,
     isFetching,
@@ -14,7 +16,7 @@ export const HomePage = () => {
     isPending,
     fetchNextPage,
     isError,
-  } = useGetInfiniteLpList(50, search, PAGINATION_ORDER.desc);
+  } = useGetInfiniteLpList(50, search, order);
 
   // ref : 특정한 HTML 요소를 감시
   // inView: 그 요소가 화면에 보이면 true
@@ -31,9 +33,31 @@ export const HomePage = () => {
   }
 
   return (
-    <div className="container m-auto px-4 py-8">
+    <div className="container m-auto px-4 py-4">
+      <div className="flex border-1 border-black w-fit justify-end mx-4 mb-4 rounded-xl overflow-hidden ml-auto">
+        <button
+          onClick={() => setOrder(PAGINATION_ORDER.asc)}
+          className={`p-2 ${
+            order === PAGINATION_ORDER.asc
+              ? "bg-black text-white"
+              : "bg-white text-black"
+          }`}
+        >
+          오래된순
+        </button>
+        <button
+          onClick={() => setOrder(PAGINATION_ORDER.desc)}
+          className={`p-2 ${
+            order === PAGINATION_ORDER.desc
+              ? "bg-black text-white"
+              : "bg-white text-black"
+          }`}
+        >
+          최신순
+        </button>
+      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-        {isPending && <LpCardSkeletonList count={20} />}
+        {isPending && hasNextPage && <LpCardSkeletonList count={20} />}
         {lps?.pages
           ?.map((page) => page.data.data)
           ?.flat()

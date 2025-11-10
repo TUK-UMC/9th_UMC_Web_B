@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import useForm from "../hooks/useForm";
 import { validateSignin, type UserSigninImformation } from "../utils/validate";
 import { useAuth } from "../context/AuthContext";
@@ -7,6 +7,9 @@ import { useEffect } from "react";
 export const LoginPage = () => {
   const { login, accessToken } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
   useEffect(() => {
     if (accessToken) {
       navigate("/");
@@ -24,11 +27,14 @@ export const LoginPage = () => {
 
   const handleSubmit = async () => {
     await login(values);
+    navigate(from, { replace: true });
   };
 
   const handleGoogleLogin = () => {
-    window.location.href =
-      import.meta.env.VITE_SERVER_API_URL + "/v1/auth/google/login";
+    const currentPath = encodeURIComponent(from);
+    window.location.href = `${
+      import.meta.env.VITE_SERVER_API_URL
+    }/v1/auth/google/login?redirect=${currentPath}`;
   };
 
   // 오류가 하나라도 있거나, 입력값이 비어있으면 버튼을 비활성화

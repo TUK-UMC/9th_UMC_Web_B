@@ -1,43 +1,50 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { Search } from "lucide-react";
+import useGetMyInfo from "../hooks/queries/useGetMyInfo";
 
-const Navbar = () => {
-  const { accessToken } = useAuth();
+interface NavbarProps {
+  onMenuClick?: () => void;
+}
+
+export const Navbar: React.FC<NavbarProps> = ({ onMenuClick }) => {
+  const navigate = useNavigate();
+  const { accessToken, logout } = useAuth();
+  const { data: me } = useGetMyInfo(accessToken);
+
+  const handleLogout = async () => {
+    await logout();
+    navigate("/");
+  };
 
   return (
-    <nav className="bg-white dark:bg-gray-900 shadow-md fixed w-full z-20">
+    <nav className="bg-white dark:bg-gray-950 shadow-md fixed w-full z-20">
       <div className="flex items-center justify-between p-4">
         <div className="flex items-center gap-2">
-          <svg
-            width="36"
-            height="36"
-            viewBox="0 0 48 48"
-            xmlns="http://www.w3.org/2000/svg"
-            className="text-white"
-          >
-            <path
-              fill="none"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="4"
-              d="M7.95 11.95h32m-32 12h32m-32 12h32"
-            />
-          </svg>
-          <NavLink
-            to="/"
-            className="text-xl font-bold text-gray-900 dark:text-white"
-          >
+          <button onClick={onMenuClick}>
+            <svg
+              width="36"
+              height="36"
+              viewBox="0 0 48 48"
+              xmlns="http://www.w3.org/2000/svg"
+              className="text-white"
+            >
+              <path
+                fill="none"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="4"
+                d="M7.95 11.95h32m-32 12h32m-32 12h32"
+              />
+            </svg>
+          </button>
+          <NavLink to="/" className="text-xl font-bold text-pink-500">
             돌려돌려 돌림판
           </NavLink>
         </div>
-        <div className="space-x-6">
-          <NavLink
-            to="/search"
-            className="text-gray-700 dark:text-gray-300 hover:text-blue-500"
-          >
-            검색
-          </NavLink>
+        <div className="flex space-x-6">
+          <Search color="white" />
           {!accessToken && (
             <>
               <NavLink
@@ -55,17 +62,23 @@ const Navbar = () => {
             </>
           )}
           {accessToken && (
-            <NavLink
-              to="/my"
-              className="text-gray-700 dark:text-gray-300 hover:text-blue-500"
-            >
-              마이페이지
-            </NavLink>
+            <div className="flex gap-4">
+              <NavLink
+                to="/my"
+                className="text-gray-700 dark:text-gray-300 hover:text-blue-500"
+              >
+                {me?.data.name}님 반갑습니다.
+              </NavLink>
+              <button
+                className="text-gray-700 dark:text-gray-300 hover:text-blue-500"
+                onClick={handleLogout}
+              >
+                로그아웃
+              </button>
+            </div>
           )}
         </div>
       </div>
     </nav>
   );
 };
-
-export default Navbar;
