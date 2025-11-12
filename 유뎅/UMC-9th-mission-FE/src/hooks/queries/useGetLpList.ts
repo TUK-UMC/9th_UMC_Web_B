@@ -9,10 +9,11 @@ export default function useGetLpList({
   search,
   order,
   limit,
+  type,
 }: PaginationDto) {
   return useQuery({
     queryKey: [QUERY_KEY.lps, useDebounce, order],
-    queryFn: () => getLpList({ cursor, search, order, limit }),
+    queryFn: () => getLpList({ cursor, search, order, limit, type }),
     // 데이터가 신선하다고 여겨지는 시간
     staleTime: 100 * 60 * 5, // 5분
     // 사용되지 않는 쿼리 데이터가 캐시에 남아있는 시간
