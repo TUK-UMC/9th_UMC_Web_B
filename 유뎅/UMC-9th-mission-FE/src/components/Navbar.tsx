@@ -44,7 +44,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onMenuClick }) => {
           </NavLink>
         </div>
         <div className="flex space-x-6">
-          <Search color="white" />
           {!accessToken && (
             <>
               <NavLink

@@ -5,6 +5,7 @@ import { Footer } from "../components/Footer";
 import { Sidebar } from "../components/Sidebar";
 import { useEffect, useState } from "react";
 import { Plus } from "lucide-react";
+import { CreateLpModal } from "../components/CreateLpModal";
 
 export const ProtectedLayout = () => {
   const { accessToken } = useAuth();
@@ -32,7 +33,7 @@ export const ProtectedLayout = () => {
       <Navbar onMenuClick={() => setIsOpen((prev) => !prev)} />
       <div className="flex flex-1">
         <Sidebar isOpen={isOpen} />
-        <main className={`flex-1 mt-17 ${isOpen ? "ml-70" : "ml-0"}`}>
+        <main className={`flex-1 mt-17 ${isOpen ? "ml-60" : "ml-0"}`}>
           <Outlet />
         </main>
       </div>

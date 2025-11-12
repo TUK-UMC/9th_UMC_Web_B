@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { LOCAL_STORAGE_KEY } from "../constants/key";
+import { useNavigate } from "react-router-dom";
 
 export const GoogleLoginRedirectPage = () => {
   const { setItem: setAccessToken } = useLocalStorage(
@@ -9,16 +10,25 @@ export const GoogleLoginRedirectPage = () => {
   const { setItem: setRefreshToken } = useLocalStorage(
     LOCAL_STORAGE_KEY.refreshToken
   );
+  const navigate = useNavigate();
+
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const accessToken = urlParams.get(LOCAL_STORAGE_KEY.accessToken);
     const refreshToken = urlParams.get(LOCAL_STORAGE_KEY.refreshToken);
 
+    const pendingRedirect =
+      urlParams.get("redirect") ||
+      localStorage.getItem("pendingRedirect") ||
+      "/";
+
     if (accessToken) {
       setAccessToken(accessToken);
       setRefreshToken(refreshToken);
-      window.location.href = "/";
+      localStorage.removeItem("pendingRedirect");
+      window.location.href = pendingRedirect;
     }
-  }, [setAccessToken, setRefreshToken]);
-  return <div>구글 로그인 리다이렉 화면</div>;
+  }, [setAccessToken, setRefreshToken, navigate]);
+
+  return <div>구글 로그인 리다이렉트 중...</div>;
 };

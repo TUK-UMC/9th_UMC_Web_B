@@ -9,7 +9,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen }) => {
   return (
     <aside
       className={`bg-white dark:bg-gray-950 fixed ${
-        isOpen ? "w-70" : "w-0"
+        isOpen ? "w-60" : "w-0"
       } h-[calc(100dvh-68px)] z-10 mt-17 overflow-hidden`}
     >
       <div className="flex flex-col justify-between h-full p-8">

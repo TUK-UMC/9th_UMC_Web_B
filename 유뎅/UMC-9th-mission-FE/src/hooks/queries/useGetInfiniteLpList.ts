@@ -6,12 +6,15 @@ import { QUERY_KEY } from "../../constants/key";
 export default function useGetInfiniteLpList(
   limit: number,
   search: string,
-  order: PAGINATION_ORDER
+  order: PAGINATION_ORDER,
+  type: "title" | "tag"
 ) {
+  const trimmedSearch = search.trim();
   return useInfiniteQuery({
-    queryKey: [QUERY_KEY.lps, search, order],
+    queryKey: [QUERY_KEY.lps, search, order, type],
     queryFn: ({ pageParam }) =>
-      getLpList({ cursor: pageParam, limit, search, order }),
+      getLpList({ cursor: pageParam, limit, search, order, type }),
+    enabled: trimmedSearch.length > 0,
     initialPageParam: 0,
     getNextPageParam: (lastPage) => {
       return lastPage.data.hasNext ? lastPage.data.nextCursor : undefined;
