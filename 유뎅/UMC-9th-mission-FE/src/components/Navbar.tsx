@@ -1,10 +1,9 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import { Search } from "lucide-react";
 import useGetMyInfo from "../hooks/queries/useGetMyInfo";
 
 interface NavbarProps {
-  onMenuClick?: () => void;
+  onMenuClick: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ onMenuClick }) => {

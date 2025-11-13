@@ -5,17 +5,18 @@ import { Sidebar } from "../components/Sidebar";
 import { useEffect, useState } from "react";
 import { Plus } from "lucide-react";
 import { CreateLpModal } from "../components/CreateLpModal";
+import { useSidebar } from "../hooks/useSidebar";
 
 export const HomeLayout = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const { isOpen, toggle, open, close } = useSidebar();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 768) {
-        setIsOpen(false);
+        close();
       } else {
-        setIsOpen(true);
+        open();
       }
     };
     handleResize(); // 초기 실행
@@ -25,12 +26,12 @@ export const HomeLayout = () => {
 
   return (
     <div className="min-h-screen flex flex-col ">
-      <Navbar onMenuClick={() => setIsOpen((prev) => !prev)} />
+      <Navbar onMenuClick={toggle} />
       <div className="flex flex-1">
-        <Sidebar isOpen={isOpen} />
+        <Sidebar isOpen={isOpen} onClose={close} />
         <main
           className={`flex-1 mt-17 ${isOpen ? "ml-60" : "ml-0"}`}
-          onClick={() => setIsOpen(false)}
+          onClick={close}
         >
           <Outlet />
         </main>
