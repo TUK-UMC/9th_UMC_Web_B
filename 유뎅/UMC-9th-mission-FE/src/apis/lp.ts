@@ -42,17 +42,16 @@ export const deleteLike = async ({
   return data;
 };
 
-export const postLp = async (formData: FormData): Promise<ResponseLpDto> => {
-  const { data } = await axiosInstance.post("/v1/lps", formData);
+export const postLp = async (
+  dto: RequestLpCreateDto
+): Promise<ResponseLpDto> => {
+  const { data } = await axiosInstance.post("/v1/lps", {
+    title: dto.title,
+    content: dto.content,
+    thumbnail: dto.thumbnail as unknown as string,
+    tags: dto.tags,
+    published: true,
+  });
 
   return data;
-};
-
-export const createLpFormData = (dto: RequestLpCreateDto): FormData => {
-  const formData = new FormData();
-  formData.append("title", dto.title);
-  formData.append("content", dto.content);
-  formData.append("tags", JSON.stringify(dto.tags));
-  formData.append("thumbnail", dto.thumbnail);
-  return formData;
 };

@@ -1,10 +1,10 @@
 import { Outlet } from "react-router-dom";
-import { Navbar } from "../components/Navbar";
-import { Footer } from "../components/Footer";
-import { Sidebar } from "../components/Sidebar";
+import { Navbar } from "../components/common/Navbar";
+import { Footer } from "../components/common/Footer";
+import { Sidebar } from "../components/common/Sidebar";
 import { useEffect, useState } from "react";
 import { Plus } from "lucide-react";
-import { CreateLpModal } from "../components/CreateLpModal";
+import { CreateLpModal } from "../components/common/Modal/CreateLpModal";
 import { useSidebar } from "../hooks/useSidebar";
 
 export const HomeLayout = () => {

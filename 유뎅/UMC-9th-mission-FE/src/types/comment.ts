@@ -20,5 +20,20 @@ export type Comment = {
   authorId: number;
   createdAt: Date;
   updatedAt: Date;
-  author: Author[];
+  author: Author;
 };
+
+export type ResponseComment = {
+  data: Comment[];
+  nextCursor: string | null;
+  hasNext: boolean;
+};
+
+export type CommonResponse<T> = {
+  status: boolean;
+  statusCode: number;
+  message: string;
+  data: T;
+};
+
+export type ResponseCommentList = CommonResponse<ResponseComment>;

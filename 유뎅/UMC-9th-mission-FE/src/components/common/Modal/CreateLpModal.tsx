@@ -1,9 +1,9 @@
 import { X } from "lucide-react";
 import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { createLpFormData, postLp } from "../apis/lp"; // ✅ LP 작성 API
-import { QUERY_KEY } from "../constants/key";
-import type { RequestLpCreateDto } from "../types/lp";
+import { postLp } from "../../../apis/lp"; // ✅ LP 작성 API
+import { QUERY_KEY } from "../../../constants/key";
+import type { RequestLpCreateDto } from "../../../types/lp";
 
 interface CreateLpModalProps {
   onClose: () => void;
@@ -61,11 +61,10 @@ export const CreateLpModal = ({ onClose }: CreateLpModalProps) => {
       title,
       content,
       tags,
-      thumbnail: image,
+      thumbnail: "https://example.com/thumbnail.png",
     };
 
-    const formData = createLpFormData(dto);
-    createLp(formData);
+    createLp(dto);
   };
 
   return (
