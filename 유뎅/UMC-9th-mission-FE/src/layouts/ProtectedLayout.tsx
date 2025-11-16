@@ -7,11 +7,15 @@ import { useEffect, useState } from "react";
 import { Plus } from "lucide-react";
 import { CreateLpModal } from "../components/common/Modal/CreateLpModal";
 import { useSidebar } from "../hooks/useSidebar";
+import { deleteUser } from "../apis/auth";
+import { LOCAL_STORAGE_KEY } from "../constants/key";
+import { UserDeleteConfirmModal } from "../components/common/Modal/UserDeleteConfirmModal";
 
 export const ProtectedLayout = () => {
   const { accessToken } = useAuth();
   const { isOpen, toggle, open, close } = useSidebar();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isUserDeleteModalOpen, setIsUserDeleteModalOpen] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -26,6 +30,23 @@ export const ProtectedLayout = () => {
     return () => window.removeEventListener("resize", handleResize);
   });
 
+  const handleDeleteUser = async () => {
+    try {
+      await deleteUser();
+      alert("회원 탈퇴가 완료되었습니다.");
+
+      localStorage.removeItem(LOCAL_STORAGE_KEY.accessToken);
+      localStorage.removeItem(LOCAL_STORAGE_KEY.refreshToken);
+
+      window.location.href = "/login";
+    } catch (error) {
+      console.error("회원 탈퇴 실패:", error);
+      alert("회원 탈퇴 중 문제가 발생했습니다.");
+    } finally {
+      setIsUserDeleteModalOpen(false);
+    }
+  };
+
   if (!accessToken) {
     return <Navigate to={"login"} replace />;
   }
@@ -33,7 +54,11 @@ export const ProtectedLayout = () => {
     <div className="min-h-screen flex flex-col ">
       <Navbar onMenuClick={toggle} />
       <div className="flex flex-1">
-        <Sidebar isOpen={isOpen} onClose={close} />
+        <Sidebar
+          isOpen={isOpen}
+          onClose={close}
+          OpenUserDeleteModal={() => setIsUserDeleteModalOpen(true)}
+        />
         <main
           className={`flex-1 mt-17 ${isOpen ? "ml-60" : "ml-0"}`}
           onClick={close}
@@ -49,6 +74,13 @@ export const ProtectedLayout = () => {
         <Plus color="white" size={30} />
       </button>
       {isModalOpen && <CreateLpModal onClose={() => setIsModalOpen(false)} />}
+      {isUserDeleteModalOpen && (
+        <UserDeleteConfirmModal
+          message="정말 탈퇴하시겠습니까?"
+          onConfirm={handleDeleteUser}
+          onCancel={() => setIsUserDeleteModalOpen(false)}
+        />
+      )}
     </div>
   );
 };

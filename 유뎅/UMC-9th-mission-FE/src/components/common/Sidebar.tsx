@@ -5,9 +5,14 @@ import { NavLink } from "react-router-dom";
 interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
+  OpenUserDeleteModal: () => void;
 }
 
-export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
+export const Sidebar = ({
+  isOpen,
+  onClose,
+  OpenUserDeleteModal,
+}: SidebarProps) => {
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === "Escape" && isOpen) {
@@ -21,12 +26,7 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
   }, [isOpen, onClose]);
 
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-
+    document.body.style.overflow = isOpen ? "hidden" : "unset";
     return () => {
       document.body.style.overflow = "unset";
     };
@@ -49,7 +49,9 @@ export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
             <p className="text-white">마이페이지</p>
           </NavLink>
         </div>
-        <button className="text-white">탈퇴하기</button>
+        <button className="text-white" onClick={OpenUserDeleteModal}>
+          탈퇴하기
+        </button>
       </div>
     </aside>
   );
