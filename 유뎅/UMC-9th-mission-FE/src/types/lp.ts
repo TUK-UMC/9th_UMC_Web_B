@@ -1,5 +1,12 @@
 import type { CommonResponse, CursorBasedResponse } from "./common";
 
+export type RequestLpCreateDto = {
+  title: string;
+  content: string;
+  thumbnail: string;
+  tags: string[];
+};
+
 export type Tag = {
   id: number;
   name: string;
